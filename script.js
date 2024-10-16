@@ -28,6 +28,25 @@ function handleCellClick(event) {
 
   gameState[clickedCellIndex] = currentPlayer;
   clickedCell.textContent = currentPlayer;
+
+  checkResult();
+}
+
+function checkResult() {
+  let roundWon = false;
+
+  for (let i = 0; i < winningConditions.length; i++) {
+    const [a, b, c] = winningConditions[i];
+    if (gameState[a] === "" || gameState[b] === "" || gameState[c] === "") {
+      continue;
+    }
+    if (gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
+      roundWon = true;
+      break;
+    }
+  }
+
+  currentPlayer = currentPlayer === "X" ? "O" : "X";
 }
 
 cells.forEach((cell) => cell.addEventListener("click", handleCellClick));
