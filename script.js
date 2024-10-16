@@ -52,6 +52,12 @@ function checkResult() {
     return;
   }
 
+  if (!gameState.includes("")) {
+    message.textContent = "Ничья!";
+    gameActive = false;
+    return;
+  }
+
   currentPlayer = currentPlayer === "X" ? "O" : "X";
 }
 
