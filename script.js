@@ -46,6 +46,12 @@ function checkResult() {
     }
   }
 
+  if (roundWon) {
+    message.textContent = `Игрок ${currentPlayer} выиграл!`;
+    gameActive = false;
+    return;
+  }
+
   currentPlayer = currentPlayer === "X" ? "O" : "X";
 }
 
